@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variables de entorno
+.env
+.env.*   # Para otros archivos de entorno, por ejemplo, .env.development
+
+# Directorio de cobertura de tests
+coverage/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Otros archivos generados
+*.pid
+*.seed
+*.pid.lock
+
+# Editor settings
+.vscode/
+.idea/
