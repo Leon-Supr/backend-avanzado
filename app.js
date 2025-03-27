@@ -1,22 +1,18 @@
 import dotenv from "dotenv"
-
-dotenv.config({
-    path:`.env.${process.env.NODE_ENV}`
-})
-
 import express from "express" // Para creación del servidor backend
+
+import connectDB from "./src/config/db.js"
+import healthCheckRoutes from "./src/routes/healthCheckRoutes.js"
+
+dotenv.config()
+connectDB()
+
 const app = express() // Indica que vamos a iniciar un servidor de forma temporal
 
-//Configuración de rutas básica
-// Health check - to check if project is alive
-app.get('/', (req, res)=>{
-    const healthCheck = {
-        status: "Ok",
-        code: "200",
-        message: "Server running"
-    }
-    res.send(healthCheck)
-})
+// Routes
+//import userRoutes from "./src/routes/userRoutes.js";
+// app.use('/api/v0/users', )
+app.use("/api/v0/", healthCheckRoutes)
 
 const PORT = 5001
 app.listen(PORT, ()=>{
