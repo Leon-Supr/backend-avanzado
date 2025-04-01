@@ -7,7 +7,7 @@ const healthCheck = (req, res) => {
     res.status(200).json({
         status: "Ok",
         code: "200",
-        message: "Server running"
+        message: "Server is running"
     })
 }
 
