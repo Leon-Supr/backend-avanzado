@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
+import {mongoDomain, mongoPWD, mongoUser, mongoDb, mongoUri} from "../config/constants.js"
+
 
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb+srv://LeonSupr:JbApznwGkvrXeayN@fundbigdaddy.t5xerws.mongodb.net/?retryWrites=true&w=majority&appName=FundBigDaddy")
+        await mongoose.connect(mongoUri)
         console.log("MongoDB Connected")
     } catch (error) {
         console.error(error)
@@ -12,5 +14,3 @@ const connectDB = async () => {
 
 export default connectDB
 
-// URI
-//    mongodb+srv://LeonSupr:JbApznwGkvrXeayN@fundbigdaddy.t5xerws.mongodb.net/?retryWrites=true&w=majority&appName=FundBigDaddy

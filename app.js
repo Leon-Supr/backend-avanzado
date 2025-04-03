@@ -6,7 +6,6 @@ import healthCheckRoutes from "./src/routes/healthCheckRoutes.js"
 import userRoutes from "./src/routes/userRoutes.js"
 import authRoutes from "./src/routes/authRoutes.js"
 
-dotenv.config()
 connectDB()
 
 const app = express() // Indica que vamos a iniciar un servidor de forma temporal

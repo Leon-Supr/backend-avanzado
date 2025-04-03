@@ -1,9 +1,10 @@
 import User from "../models/User.js";
 import jwt from "jsonwebtoken"
+import { jwtSecret } from "../config/constants.js";
 import bcrypt from "bcryptjs";
 
 const generateToken = (id) => {
-    return jwt.sign({ id }, "llaveAleatoria", { expiresIn: '30d' })
+    return jwt.sign({ id }, jwtSecret, { expiresIn: '30d' })
 }
 
 export const registerUser = async (req, res) => {
@@ -35,9 +36,9 @@ export const authenticateUser = async (req, res) => {
 
     if (userExist && (await bcrypt.compare(password, userExist.password))) {
         res.json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
+            _id: userExist._id,
+            name: userExist.name,
+            email: userExist.email,
             token: generateToken(userExist._id)
         })
     } else {
