@@ -1,4 +1,5 @@
 import mongoose from "mongoose"; // Porque va a interpretar a partir de un objeto MongoDB
+import bcrypt from "bcryptjs";
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -20,7 +21,7 @@ const UserSchema = new mongoose.Schema({
 })
 
 // Método para hashear password antes de guardar el usuario
-UserSchema.pre('save', async (next) => {
+UserSchema.pre('save', async function(next) {
     if (!this.isModified('password')) return next();
     this.password = await bcrypt.hash(this.password, 12)
     next()
